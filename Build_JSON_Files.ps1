@@ -16,21 +16,15 @@ Microsoft.Getstarted,"https://www.microsoft.com/en-us/p/microsoft-tips/9wzdncrdt
 Microsoft.Messaging,"https://www.microsoft.com/en-us/p/microsoft-messaging/9wzdncrfjbq6"
 Microsoft.MicrosoftOfficeHub,"https://www.microsoft.com/en-us/p/office/9wzdncrd29v9"
 Microsoft.MicrosoftSolitaireCollection,"https://www.microsoft.com/en-us/p/microsoft-solitaire-collection/9wzdncrfhwd2"
-Microsoft.MicrosoftStickyNotes,"https://www.microsoft.com/en-us/p/microsoft-sticky-notes/9nblggh4qghw"
 Microsoft.MixedReality.Portal,"https://www.microsoft.com/en-us/p/mixed-reality-portal/9ng1h8b3zc7m"
-Microsoft.Office.OneNote,"https://www.microsoft.com/en-us/p/onenote/9wzdncrfhvjl"
 Microsoft.People,"https://www.microsoft.com/en-us/p/microsoft-people/9nblggh10pg8"
 Microsoft.Print3D,"https://www.microsoft.com/en-us/p/print-3d/9pbpch085s3s"
 Microsoft.SkypeApp,"https://www.microsoft.com/en-us/p/skype/9wzdncrfj364"
 Microsoft.Wallet,"https://www.microsoft.com/en-us/payments"
-Microsoft.Windows.Photos,"https://www.microsoft.com/en-us/p/microsoft-photos/9wzdncrfjbh4"
 Microsoft.Microsoft3DViewer,"https://www.microsoft.com/en-us/p/3d-viewer/9nblggh42ths"
 Microsoft.WindowsAlarms,"https://www.microsoft.com/en-us/p/windows-alarms-clock/9wzdncrfj3pr"
-Microsoft.WindowsCalculator,"https://www.microsoft.com/en-us/p/windows-calculator/9wzdncrfhvn5"
-Microsoft.WindowsCamera,"https://www.microsoft.com/en-us/p/windows-camera/9wzdncrfjbbg"
 microsoft.windowscommunicationsapps,"https://www.microsoft.com/en-us/p/mail-and-calendar/9wzdncrfhvqm"
 Microsoft.WindowsFeedbackHub,"https://www.microsoft.com/en-us/p/feedback-hub/9nblggh4r32n"
-Microsoft.WindowsMaps,"https://www.microsoft.com/en-us/p/windows-maps/9wzdncrdtbvb"
 Microsoft.WindowsSoundRecorder,"https://www.microsoft.com/en-us/p/windows-voice-recorder/9wzdncrfhwkn"
 Microsoft.Xbox.TCUI,"https://docs.microsoft.com/en-us/gaming/xbox-live/features/general/tcui/live-tcui-overview"
 Microsoft.XboxApp,"https://www.microsoft.com/store/apps/9wzdncrfjbd8"
@@ -39,9 +33,6 @@ Microsoft.XboxGamingOverlay,"https://www.microsoft.com/en-us/p/xbox-game-bar/9nz
 Microsoft.XboxIdentityProvider,"https://www.microsoft.com/en-us/p/xbox-identity-provider/9wzdncrd1hkw"
 Microsoft.XboxSpeechToTextOverlay,"https://support.xbox.com/help/account-profile/accessibility/use-game-chat-transcription"
 Microsoft.YourPhone,"https://www.microsoft.com/en-us/p/Your-phone/9nmpj99vjbwv"
-Microsoft.ZuneMusic, "https://www.microsoft.com/en-us/p/groove-music/9wzdncrfj3pt"
-Microsoft.ZuneVideo,"https://www.microsoft.com/en-us/p/movies-tv/9wzdncrfj3p2"
-Microsoft.ScreenSketch,"https://www.microsoft.com/en-us/p/snip-sketch/9mz95kl8mr0l"
 "@
 $AppxPackages = ($AppxPackages -split "`n").trim()
 $AppxPackages = $AppxPackages | ConvertFrom-Csv -Delimiter ',' -Header "PackageName", "HelpURL"
@@ -65,12 +56,6 @@ $AutoLoggers = ($AutoLoggers -split "`n").Trim() | ForEach-Object {
     $BaseKey = 'HKLM:\SYSTEM\CurrentControlSet\Control\WMI\Autologger\'
     Switch ($_)
     {
-        AppModel
-        {
-            $Description = "Used by Packaging, deployment, and query of Windows Store apps. Especially on non-persistent VDI, we tightly control what apps are installed and available, and normally don’t let users change the configuration.  Persistent VDI would be a different story.  If you allow reconfiguration of UWP apps, remove this item." 
-            $URL = "https://docs.microsoft.com/en-us/windows/win32/api/appmodel/"
-            $Disable = $True
-        }
         CloudExperienceHostOOBE
         {
             $Description = '“Cloud Experience Host” is an application used while joining the workplace environment or Azure AD for rendering the experience when collecting your company-provided credentials. Once you enroll your device to your workplace environment or Azure AD, your organization will be able to manage your PC and collect information about you (including your location). It might add or remove apps or content, change settings, disable features, prevent you from removing your company account, or reset your PC.”. The OOBE part means “out-of-box experience”.  This trace records events around domain or Azure AD join.  Normally provisioned VDI VMs are already joined, so this logging is unnecessary.' 
@@ -179,7 +164,6 @@ DPS
 DsmSvc
 DusmSvc
 icssvc
-InstallService
 lfsvc
 MapsBroker
 MessagingService
@@ -231,8 +215,6 @@ add "HKLM\Temp\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"
 add "HKLM\Temp\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SubscribedContent-338389Enabled /t REG_DWORD /d 0 /f
 add "HKLM\Temp\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SystemPaneSuggestionsEnabled /t REG_DWORD /d 0 /f
 add "HKLM\Temp\Control Panel\International\User Profile" /v HttpAcceptLanguageOptOut /t REG_DWORD /d 1 /f
-add "HKLM\Temp\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.Windows.Photos_8wekyb3d8bbwe" /v Disabled /t REG_DWORD /d 1 /f
-add "HKLM\Temp\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.Windows.Photos_8wekyb3d8bbwe" /v DisabledByUser /t REG_DWORD /d 1 /f
 add "HKLM\Temp\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.SkypeApp_kzf8qxf38zg5c" /v Disabled /t REG_DWORD /d 1 /f
 add "HKLM\Temp\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.SkypeApp_kzf8qxf38zg5c" /v DisabledByUser /t REG_DWORD /d 1 /f
 add "HKLM\Temp\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.YourPhone_8wekyb3d8bbwe" /v Disabled /t REG_DWORD /d 1 /f
