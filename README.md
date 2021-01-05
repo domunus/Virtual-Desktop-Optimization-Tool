@@ -1,4 +1,6 @@
-# Introduction 
+# Introduction
+Forked from The-Virtual-Desktop-Team repo. 
+
 The toolset in this repository was created to automatically apply setting referenced in white paper:
 "Optimizing Windows 10, version 2004 for a Virtual Desktop Infrastructure (VDI) role"  
 URL: https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/rds-vdi-recommendations-2004  
